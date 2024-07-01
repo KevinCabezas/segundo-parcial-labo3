@@ -80,15 +80,11 @@ export function deleteOne(objeto) {
 
     let xhr = new XMLHttpRequest();
     xhr.addEventListener("readystatechange", function () {
-      //agregamos el manejador de eventos
       if (xhr.readyState == 4) {
         ocultarSpinner();
-        // Petición finalizada
         if (xhr.status == 200) {
-          // respuesta del servidor si actualiza con exito
           resolve("Eliminado con exito");
         } else {
-          // falló algo
           reject("ERR " + xhr.status + " :" + xhr.statusText);
         }
       }
@@ -96,7 +92,7 @@ export function deleteOne(objeto) {
     mostrarSpinner();
     xhr.open("DELETE", `${ENDPOINT}/${objeto.id}`);
 
-    xhr.send(); // lo convierto a un json string
+    xhr.send();
   });
 }
 
@@ -106,26 +102,20 @@ export function editOne(objeto) {
   return new Promise((resolve, reject) => {
     let xhr = new XMLHttpRequest();
     xhr.addEventListener("readystatechange", function () {
-      //agregamos el manejador de eventos
       if (xhr.readyState == 4) {
         mostrarSpinner();
-        // Petición finalizada
         if (xhr.status == 200) {
-          // respuesta del servidor si actualiza con exito
           resolve("Actualizado con exito");
         } else {
-          // falló algo
           reject("ERR " + xhr.status + " :" + xhr.statusText);
         }
       }
     });
     ocultarSpinner();
-    // Ahora los datos lo pasamos via PUT, debido a que estamos por agregar/manipular el contenido del backend
-    // debemos aclarar el tipo de dato que va a viajar en el cuerpo de la peticion
     xhr.open("PUT", `${ENDPOINT}/${objeto.id}`);
     xhr.setRequestHeader("content-type", "application/json");
 
-    xhr.send(JSON.stringify(objeto)); // lo convierto a un json string
+    xhr.send(JSON.stringify(objeto)); 
   });
 }
 
@@ -134,17 +124,12 @@ export function getOne(id) {
 
     let xhr = new XMLHttpRequest();
     xhr.addEventListener("readystatechange", function () {
-      //agregamos el manejador de eventos
       if (xhr.readyState == 4) {
-        // Petición finalizada
         ocultarSpinner();
         if (xhr.status == 200) {
-          // respuesta del servidor si actualiza con exito
           const obj = JSON.parse(xhr.responseText);
           resolve(obj);
-          // console.log(obj);
         } else {
-          // falló algo
           reject("ERR " + xhr.status + " :" + xhr.statusText);
         }
       }
@@ -152,7 +137,7 @@ export function getOne(id) {
     mostrarSpinner();
     xhr.open("GET", `${ENDPOINT}/${id}`);
 
-    xhr.send(); // lo convierto a un json string
+    xhr.send(); 
   });
 
 }

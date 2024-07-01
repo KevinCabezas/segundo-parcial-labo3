@@ -134,7 +134,7 @@
     </section>
 
     <section>
-      <div class="container-filter d-flex justify-content-center m-4 bg-dark" style="display: flex;" >
+      <div class="container-filter d-flex justify-content-center m-4" style="display: flex;" >
         <div class="row d-flex align-items-center container-inputs px-5 py-4">
           <form action="" method="post" id="form-filter" class="form-filter" >
             <div class="col-md-6">
@@ -142,87 +142,28 @@
                 <label for="filtro">FILTRAR OPERACION</label>
                 <select id="operacion" name="operacion" class="" required>
                   <option value="" disabled selected>Seleccione</option>
-                  <option value="nombre">Nombre</option>
-                  <option value="tamanio">Tamaño</option>
-                  <option value="masa">Masa</option>
-                  <option value="tipo">Tipo</option>
-                  <option value="distancia">Distancia del Sol</option>
-                  <option value="vida">Vida</option>
-                  <option value="anillo">Anillo</option>
-                  <option value="composicion">Composicion Admosferica</option>
-                </select>
+                  <option value="rocoso">Rocoso</option>
+                  <option value="gaseoso">Gaseoso</option>
+                  <option value="helado">Helado</option>
+                  <option value="enano">Enano</option>
+              </select>
               </div>
             </div>
             <div class="col-md-6">
               <div class="filters">
-                <label for="dato">DATO</label>
-                <input class=""
-                type="text"
-                name="dato"
-                id="dato"
-                placeholder="dato"
-                required>
+                <label for="dato">Promedio</label>
+                <span id="promedio"></span>
               </div>
             </div>
-            <span id="promedio">Texto inicial</span>
             <div class="buton-form" id="btn-filter"  style="display: flex;">
               <button class="btn" id="buton-filter">FILTRAR</button>
-              <button type="button" class="btn" id="buton-filter">FINALIZAR</button>
+              <button type="button" class="btn" id="buton-finalizar">FINALIZAR</button>
             </div>
           </form>  
         </div>
       </div>
     </section>
 
-
-
-
-
-
-    <section>
-      <div style="display: flex;" class="container-select-column d-flex" id="check-col">
-        <!-- <div class="select-column d-flex">
-          <label for="id">Id</label>
-          <input class="filter-toggle" type="checkbox" name="id" id="id" data-column="id" checked />
-        </div> -->
-        <div class="card p-2">
-          <label for="card">FILTRAR COLUMNA</label>
-          <div class="select-column d-flex">
-            <label for="nombre-col">Nombre</label>
-            <input class="filter-toggle" type="checkbox" name="nombre-col" id="nombre-col" data-column="nombre" checked />
-          </div>
-          <div class="select-column d-flex">
-            <label for="tamanio-col">Tamaño</label>
-            <input class="filter-toggle" type="checkbox" name="tamanio-col" id="tamanio-col" data-column="tamanio" checked />
-          </div>
-          <div class="select-column d-flex">
-            <label for="masa-col">Masa</label>
-            <input class="filter-toggle" type="checkbox" name="masa-col" id="masa-col" data-column="masa" checked />
-          </div>
-          <div class="select-column d-flex">
-            <label for="tipo-col">Tipo</label>
-            <input class="filter-toggle" type="checkbox" name="tipo-col" id="tipo-col" data-column="tipo" checked />
-          </div>
-          <div class="select-column d-flex">
-            <label for="distancia-col">Dis_sol</label>
-            <input class="filter-toggle" type="checkbox" name="distancia-col" id="distancia-col" data-column="distancia" checked />
-          </div>
-          <div class="select-column d-flex">
-            <label for="vida-col">Vida</label>
-            <input class="filter-toggle" type="checkbox" name="vida-col" id="vida-col" data-column="vida" checked />
-          </div>
-          <div class="select-column d-flex">
-            <label for="anillo-col">Anillo</label>
-            <input class="filter-toggle" type="checkbox" name="anillo-col" id="anillo-col" data-column="anillo" checked />
-          </div>
-          <div class="select-column d-flex">
-            <label for="composicion-col">Com_Admosferica</label>
-            <input class="filter-toggle" type="checkbox" name="composicion-col" id="composicion-col" data-column="composicion" checked />
-          </div>
-        
-        </div>
-      </div>
-    </section>
 
     <section>
       <div class="spinner-container">

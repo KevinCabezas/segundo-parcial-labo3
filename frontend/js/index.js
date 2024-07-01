@@ -1,16 +1,10 @@
 import { Planeta } from "./planeta.js";
-// import { leer, escribir, limpiar, jsonToObject, objectToJson } from "./local-storage-async.js";
 import { obtenerTodos, addOne, editOne, deleteOne, deleteAll, getOne } from "./api.js";
 import { editOneFetch, getOneFetch } from "./api.js";
-import { mostrarSpinner, ocultarSpinner } from "./spinner.js";
-import { filtrarLista, listaMapeada, promedioDatos} from "./filert.js";
-import { controlerColumns, actualizarVisibilidadColumnas } from "./controlerColum.js";
-// import { get } from "http";
-const KEY_STORAGE = "planetas";
+import { filtrarLista, listaMapeada, listaMapeadaDos, promedioDatos, promedioDistanciaTipo} from "./filert.js";
 const items = [];
 let idObjeto = 0;
 
-const selectCol = [];
 
 const formulario = document.getElementById("form-item");
 
@@ -23,16 +17,6 @@ const vida = formulario.querySelector("#vida");
 const anillo = formulario.querySelector("#anillo");
 const composicion = formulario.querySelector("#composicion");
 
-
-const columnas = document.getElementById("check-col");
-const nombreColumna = columnas.querySelector("#nombre-col");
-const tamanioColumna = columnas.querySelector("#tamanio-col");
-const masaColumna = columnas.querySelector("#masa-col");
-const tipoColumna = columnas.querySelector("#tipo-col");
-const distanciaColumna = columnas.querySelector("#distancia-col");
-const vidaColumna = columnas.querySelector("#vida-col");
-const anilloColumna = columnas.querySelector("#anillo-col");
-const composicionColumna = columnas.querySelector("#composicion-col");
 
 const formularioFiltro = document.getElementById("form-filter");
 const operacion = formularioFiltro.querySelector("#operacion");
@@ -55,25 +39,20 @@ function onInit() {
   botonCancelarEdicion();
   loadItems();
 
-  // allColumnSelect();
 
-  // initializeColumnVisibility();
   obtenerDatosFilter();
-  // mangeColumn();
-  // actualizarVisibilidadColumnas();
   controlerColumns();
   buscarPorId();
 
+  botonFinalizar();
 }
 
 async function loadItems() {
-  // let str = await leer(KEY_STORAGE);
-  // mostrarSpinner();
-  let str = await obtenerTodos();
-  // ocultarSpinner();
+  let listMapeada = await obtenerTodos();
+  let str = listaMapeadaDos(listMapeada)
+  console.log(str);
   const objetos = str || [];
 
-  // items.length = 0
   objetos.forEach(obj => {
     const model = new Planeta(
       obj.id,
@@ -92,30 +71,21 @@ async function loadItems() {
 
   
   rellenarTabla(listaMapeada(items));
-  // mostrarPromedio();
-  // console.log(promedioDatos(items))
-
+  
 }
 
 function mostrarPromedio() {
 
-  console.log(textoPromedio.textContent)
-  textoPromedio.textContent = promedioDatos(items, operacion.value, dato.value);
-  
-  // Modifica el texto del label
-  // label.textContent = "Nuevo texto del label";
+  textoPromedio.textContent = promedioDistanciaTipo(items, operacion.value)
 }
 
 function obtenerDatosFilter() {
   formularioFiltro.addEventListener("submit", (e) => {
     e.preventDefault();
     console.log(operacion.value);
-    // dato.value;
-    let listaFiltrada = filtrarLista(items, operacion.value, dato.value);
-    // items.length = 0;
+    let listaFiltrada = filtrarLista(items, operacion.value);
     console.log(listaFiltrada);
-    // items.push(...listaFiltrada);
-    // loadItems();
+
     rellenarTabla(listaFiltrada);
     mostrarPromedio();
 
@@ -126,9 +96,6 @@ function obtenerDatosFilter() {
 function buscarPorId() {
   formBuscar.addEventListener("submit", (e) => {
     e.preventDefault();
-    // const objeto = getOne(idIngresado.value);
-
-    // console.log(objeto[1])
 
     getOne(idIngresado.value).then(objeto => {
       nombre.value = objeto.nombre;
@@ -141,12 +108,8 @@ function buscarPorId() {
       composicion.value = objeto.composicion;
       idObjeto = objeto.id;
 
-      console.log(objeto.nombre); // Aquí tienes el objeto
-      // Puedes hacer lo que necesites con el objeto
     })
-    // console.log(getOneFetch(idIngresado.value));
-    // console.log(idIngresado.value);
-    // console.log(getOne(idIngresado.value));
+  
     mostrarEditar('flex');
     mostrarBotonesForm('none');
     
@@ -189,11 +152,9 @@ async function escuchandoFormulario() {
   formulario.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    // let vidaCheck = vida.checked ? "tiene" : "no tiene";
-    // let anilloCheck = anillo.checked ? "tiene" : "no tiene";
+    
     var fechaActual = new Date();
     let id = asignarId();
-    // let id = fechaActual.getTime();
 
     const model = new Planeta(
       id,
@@ -204,8 +165,6 @@ async function escuchandoFormulario() {
       distancia.value,
       vida.checked,
       anillo.checked,
-      // vidaCheck,
-      // anilloCheck,
       composicion.value
     );
     
@@ -213,10 +172,7 @@ async function escuchandoFormulario() {
     
     if (respuesta.success) {
       items.push(model);
-      // mostrarSpinner();
       await addOne(model);
-      // ocultarSpinner();
-      // loadItems();
       rellenarTabla(listaMapeada(items));
       limpiarFormulario();
     }
@@ -231,17 +187,6 @@ async function escuchandoFormulario() {
   });
 }
 
-function actualizarListaObjetos() {
-  // const str = items;
-  // mostrarSpinner();
-  // await escribir(KEY_STORAGE, str);
-  // await addOne(model)
-  // ocultarSpinner();
-  // loadItems();
-  rellenarTabla(items);
-  mostrarBotonesForm('flex');
-  mostrarEditar('none');
-}
 
 function actulizarId() {
   items.forEach((ite, indice) => {
@@ -257,7 +202,6 @@ function asignarId() {
     ultimoId = items.length + 1;
   }
   return ultimoId;
-  // return "00" + ultimoId;
 }
 
 function limpiarFormulario() {
@@ -309,11 +253,6 @@ async function eliminarObjetoDeLista() {
     const rta = confirm('Sea eliminar el elemento: ' + idObjeto);
     if (rta) {
       await deleteOne(objeto);
-      // items.splice(0, items.length);
-      // loadItems();
-      // items.splice(idObjeto-1, 1);
-      // rellenarTabla(items);
-
       actulizarId();
       mostrarBotonesForm('flex');
       mostrarEditar('none');
@@ -356,15 +295,12 @@ function modificarObjeto() {
   let anilloCheck = anillo.checked ? "tiene" : "no tiene";
   
   actualizarObjeto(objeto, vidaCheck, anilloCheck);
-  // actualizarListaObjetos();
   limpiarFormulario();
   inicializarIdSeleccionado();
   mostrarBotonesForm('flex');
-  // editOne(objeto);
 }
 
 function actualizarObjeto(objeto, vidaCheck, anilloCheck) {
-  // objeto.id = idObjeto;
   objeto.nombre = nombre.value;
   objeto.tamanio = tamanio.value;
   objeto.masa = masa.value;
@@ -373,7 +309,6 @@ function actualizarObjeto(objeto, vidaCheck, anilloCheck) {
   objeto.vida = vidaCheck;
   objeto.anillo = anilloCheck;
   objeto.composicion = composicion.value;
-  // editOne(objeto);
   editOneFetch(objeto)
 }
 
@@ -440,4 +375,19 @@ function botonCancelarEdicion() {
     mostrarEditar('none');
   });
 
+}
+
+function ocultarFormFilter(style) {
+  const elemento = document.querySelector('.container-filter');
+  elemento.style.display = style;
+}
+
+function botonFinalizar() {
+  const btn = document.getElementById("buton-finalizar");
+  btn.addEventListener("click", () => {
+
+    ocultarFormFilter('none');
+    console.log("entro");
+  });
+  ;
 }
