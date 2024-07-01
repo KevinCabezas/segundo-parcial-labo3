@@ -1,0 +1,347 @@
+@font-face {
+    font-family: poppins; 
+    src: url(/simulacro-SP/frontend/assets/fonts/Poppins-Medium.ttf);
+  
+}
+
+:root {
+    --primary-color: #3518b3;
+    --secondary-color: #e0d7bc;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: poppins;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+}
+
+header {
+    padding: 20px 20px;
+    /* background-image: url(/assets/background.jpg); */
+    background-image: url(/simulacro-SP/frontend/assets/background.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 65vh;
+    font-family: poppins;
+    color: white;
+}
+@media(max-width:760px) {
+    header {
+        background-image: none;
+        background: green;
+    }
+}
+.container-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 0.089);
+}
+.container-header img {
+    height: 50px;
+}
+
+.menu nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.menu nav ul li {
+    margin: 0 6px;
+}
+
+.menu nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    padding: 5px 10px;
+    transition: background-color 0.3s;
+    border-radius: 5px;
+
+}
+
+.menu nav ul li a:hover {
+    background-color: rgba(7, 18, 63, 0.253); 
+    border-radius: 5px;
+}
+.header-title {
+    margin-top: 16%;
+    width: 300px;
+}
+
+.container-footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.container-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+      
+
+.menu-footer li:last-child {
+    margin-right: 0px; 
+}
+
+h3 {
+    font-size: 14px;
+    margin:  0 20px;
+}
+
+.container-seccion {
+    background-color: rgb(166, 235, 231);
+    
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* align-items: center; */
+    /* justify-content: center; */
+    padding-top: 30px;
+    /* margin-top: 30px; */
+    /* padding-left: 300px; */
+}
+
+.container-form {
+    background-color: #3518b3;
+}
+
+.form-item {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    /* gap: 20px; */
+    /* width: 440px; */
+    border-radius: 10px;
+    /* align-items: center; */
+    /* justify-content: center; */
+}
+
+@media(max-width: 1200px) {
+    .form-item {
+        background: green;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+    }
+}
+
+.form-group {
+    /* background-color: #c73d3d; */
+    display: flex;
+    margin-top: 10px;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: center;
+
+}
+label {
+    /* background-color: #3518b3; */
+    color: #3518b3;
+    font-size: 15px;
+}
+.inputs {
+    margin-left: 20px;
+    /* align-items: flex-end; */
+    /* background-color: #3518b3; */
+    width: 130px;
+    border-radius: 5px;
+}
+
+h2 {
+    /* background-color: #c73d3d; */
+    display: flex;
+    color: #3518b3;
+    /* align-items: center; */
+    justify-content: center;
+    /* margin-left: 50px; */
+}
+.buton-form {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    justify-content: center;  /* centra de izquierda y derecha */
+    align-items: center; /* centra de arrriba y abajo */
+    gap:  25px;
+}
+
+.btn {
+    /* flex: 1; */
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    height: 35px;
+    width: 100px;
+    border-radius: 8px;
+    /* background-color: rgba(211, 23, 23, 0.726); */
+    background-color: rgb(214, 82, 82);
+    border: none;
+    color: white;
+}
+
+
+.btn:hover {
+    background-color: rgba(10, 172, 10, 0.76);
+    transition: 10ms;
+}
+
+#buton-guardar {
+    background-color: rgba(10, 172, 10, 0.76) ;
+}
+
+#buton-guardar:hover {
+    color: rgba(10, 172, 10, 0.76);
+    background-color: rgba(240, 240, 103, 0.808);
+}
+
+.element {
+    margin: 5px;
+}
+
+.container-btn-delete-all {
+    /* background-color: #4831ca; */
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    /* margin: 0px 200px; */
+    /* height: auto; */
+    /* width: auto; */
+    padding-bottom: 1px ;
+}
+.btn-eliminar-todo {
+    justify-content: center;
+    width: 130px;
+}
+/* Filtro ---------------------------------------------- */
+
+.container-inputs {
+    background-color: rgb(239, 240, 221);
+    height: auto;
+    width: auto;
+    border-radius: 5px;
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* margin: ; */
+    /* gap: 1000px; */
+}
+
+.filters {
+    display: flex;
+    /* background-color: aquamarine; */
+    flex-direction: column;
+    /* gap: px; */
+    width: 150px;
+    /* align-items: start; */
+}
+
+/* seleccionar columna ------------------------------- */
+.container-select-column {
+    /* background-color: #a1ca31; */
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.select-column {
+    /* background-color: blanchedalmond; */
+    width: auto;
+    /* align-items: center; */
+    /* flex-direction: row; */
+    gap: 20px;
+    justify-content: space-between;
+}
+
+/*  tabla----------------------------------------- */
+
+.container-seccion-tabla {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1px;
+}
+
+.section-card {
+    /* background-color: #8ae706; */
+    display: flex;
+    align-items: end;
+    width: 70%;
+    height: 70px;
+}
+.card-tabla {
+    flex-direction: row;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.container-buscar {
+    display: flex;
+    /* background-color: aqua; */
+    flex-direction: column;
+}
+
+.container-buscar input {
+    width: 100px;
+}
+
+.container-table {
+    /* background-color: #3518b3; */
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    padding-bottom: 10px;
+}
+
+
+
+.table-items {
+    /* background-color: black; */
+    border: none;
+    margin: 3px 0 10px ;
+
+}
+
+tr th { 
+    background-color: rgb(133, 138, 138);
+    color: white;
+    padding: 10px;
+}
+
+.tbody {
+    background-color: white;
+    text-align: center;
+}
+/* --------------tabla----------------- */
+
+.editar-btn {
+    /* background-color: aliceblue; */
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    gap: 10px;
+    margin-top: 22px;
+    
+}
+
+/* controls Columns--------------------------

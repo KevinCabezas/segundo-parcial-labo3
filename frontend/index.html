@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/logo.svg">
+    <link rel="stylesheet" href="./styles/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/index.css" />
+    <link rel="stylesheet" href="styles/spiner.css" />
+    <!-- <link rel="stylesheet" href="index.css" /> -->
+
+    <!-- <script src="js/controlerColum.js" defer></script> -->
+    <script src="js/index.js" type="module" defer></script>
+
+
+    <title>Segundo Parcial</title>
+</head>
+<body>
+  <header>
+    <div class="container-header">
+      <img src="assets/logo.svg" alt="Logo">
+      <div class="menu">
+        <nav>
+          <ul>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Sobre</a></li>
+            <li><a href="#">Servicios</a></li>
+            <li><a href="#">Obras</a></li>
+            <li><a href="#">Contactos</a></li>
+          </ul>
+        </nav>
+      </div>
+  </div>
+  <h1 class="header-title">Administrador de Planetas</h1>
+  
+  </header>
+  <div class="container-seccion">
+    <section>
+      <div class="d-flex justify-content-center container-form">
+        <form action="" method="post" id="form-item" class="form-item">
+          <h2>Informacion del Anuncio</h2>
+
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input
+              class="inputs"
+              type="text"
+              required
+              name="nombre"
+              id="nombre"
+              placeholder="Nombre"
+            />
+          </div>
+        
+          <div class="form-group">
+            <label for="tamanio">Tamaño</label>
+            <input class="inputs"
+              type="number"
+              required
+              name="tamanio"
+              id="tamanio"
+              placeholder="Tamaño"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="masa">Masa</label>
+            <input class="inputs"
+              type="text"
+              required
+              name="masa"
+              id="masa"
+              placeholder="Masa"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="tipo">Tipo</label>
+            <select id="tipo" name="tipo" class="inputs" required>
+                <option value="" disabled selected>Seleccione</option>
+                <option value="rocoso">Rocoso</option>
+                <option value="gaseoso">Gaseoso</option>
+                <option value="helado">Helado</option>
+                <option value="enano">Enano</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="distancia">Distancia del Sol</label>
+            <input class="inputs"
+            type="number"
+            required
+            name="distancia"
+            id="distancia"
+            placeholder="distancia"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="vida">Presenta Vida</label>
+            <input class="inputs"
+            type="checkbox"
+            name="vida"
+            id="vida"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="anillo">Presenta Anillo</label>
+            <input class="inputs"
+            type="checkbox"
+            name="anillo"
+            id="anillo"
+            />
+          </div>
+
+          <div class="form-group">
+              <label for="composicion">Composicion Admosferica</label>
+              <input class="inputs"
+              type="text"
+              required
+              name="composicion"
+              id="composicion"
+              placeholder="composicion"
+              />
+          </div>
+          <!-- boton -->
+          <div class="buton-form" id="btn-principal"  style="display: flex;">
+            <button class="btn" id="buton-guardar">Guardar</button>
+            <button class="btn" type="button" id="buton-cancel">Cancelar</button>
+          </div>
+        </form>  
+      </div>
+    </section>
+
+    <section>
+      <div class="container-filter d-flex justify-content-center m-4 bg-dark" style="display: flex;" >
+        <div class="row d-flex align-items-center container-inputs px-5 py-4">
+          <form action="" method="post" id="form-filter" class="form-filter" >
+            <div class="col-md-6">
+              <div class="filters">
+                <label for="filtro">FILTRAR OPERACION</label>
+                <select id="operacion" name="operacion" class="" required>
+                  <option value="" disabled selected>Seleccione</option>
+                  <option value="nombre">Nombre</option>
+                  <option value="tamanio">Tamaño</option>
+                  <option value="masa">Masa</option>
+                  <option value="tipo">Tipo</option>
+                  <option value="distancia">Distancia del Sol</option>
+                  <option value="vida">Vida</option>
+                  <option value="anillo">Anillo</option>
+                  <option value="composicion">Composicion Admosferica</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="filters">
+                <label for="dato">DATO</label>
+                <input class=""
+                type="text"
+                name="dato"
+                id="dato"
+                placeholder="dato"
+                required>
+              </div>
+            </div>
+            <span id="promedio">Texto inicial</span>
+            <div class="buton-form" id="btn-filter"  style="display: flex;">
+              <button class="btn" id="buton-filter">FILTRAR</button>
+              <button type="button" class="btn" id="buton-filter">FINALIZAR</button>
+            </div>
+          </form>  
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+
+    <section>
+      <div style="display: flex;" class="container-select-column d-flex" id="check-col">
+        <!-- <div class="select-column d-flex">
+          <label for="id">Id</label>
+          <input class="filter-toggle" type="checkbox" name="id" id="id" data-column="id" checked />
+        </div> -->
+        <div class="card p-2">
+          <label for="card">FILTRAR COLUMNA</label>
+          <div class="select-column d-flex">
+            <label for="nombre-col">Nombre</label>
+            <input class="filter-toggle" type="checkbox" name="nombre-col" id="nombre-col" data-column="nombre" checked />
+          </div>
+          <div class="select-column d-flex">
+            <label for="tamanio-col">Tamaño</label>
+            <input class="filter-toggle" type="checkbox" name="tamanio-col" id="tamanio-col" data-column="tamanio" checked />
+          </div>
+          <div class="select-column d-flex">
+            <label for="masa-col">Masa</label>
+            <input class="filter-toggle" type="checkbox" name="masa-col" id="masa-col" data-column="masa" checked />
+          </div>
+          <div class="select-column d-flex">
+            <label for="tipo-col">Tipo</label>
+            <input class="filter-toggle" type="checkbox" name="tipo-col" id="tipo-col" data-column="tipo" checked />
+          </div>
+          <div class="select-column d-flex">
+            <label for="distancia-col">Dis_sol</label>
+            <input class="filter-toggle" type="checkbox" name="distancia-col" id="distancia-col" data-column="distancia" checked />
+          </div>
+          <div class="select-column d-flex">
+            <label for="vida-col">Vida</label>
+            <input class="filter-toggle" type="checkbox" name="vida-col" id="vida-col" data-column="vida" checked />
+          </div>
+          <div class="select-column d-flex">
+            <label for="anillo-col">Anillo</label>
+            <input class="filter-toggle" type="checkbox" name="anillo-col" id="anillo-col" data-column="anillo" checked />
+          </div>
+          <div class="select-column d-flex">
+            <label for="composicion-col">Com_Admosferica</label>
+            <input class="filter-toggle" type="checkbox" name="composicion-col" id="composicion-col" data-column="composicion" checked />
+          </div>
+        
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="spinner-container">
+              <img src="assets/logo.svg" alt="Cargando..." id="spinner" class="spinner" style="display: none;">
+      </div>
+      <div class="container-seccion-tabla d-flex" >
+        <div class="section-card  align-items-end">
+          <div class="card-tabla d-flex">
+            <div class="container-buscar d-flex">
+              <label for="buscar-btn">Buscar por Id</label>
+              <form action="" method="post" id="form-buscar" class="form-buscar">
+                <input type="number" name="buscar-btn" id="buscar-btn" required>
+                <button class="btn" id="buton-filter">Buscar</button>
+              </form>
+            </div>
+            <div class="editar-btn" id="editar" style="display: none;">
+              <button type="button" id="btn-modificar" class="btn" >Modificar</button>
+              <button type="button" id="btn-eliminar" class="btn">Eliminar</button>
+              <button type="button" id="buton-cancelar" class="btn">Cancelar</button>
+            </div>
+            <div class="container-btn-delete-all buton">
+              <button type="button" id="btn-delete-all" class="btn btn-eliminar-todo d-flex">Borrar Todo</button>
+            </div>
+          </div>
+        </div>
+        
+        
+    
+        <div class="container-table">
+          <table id="table-items-c" class="table-items table-stripped ">
+            <thead>
+              <tr class="flex">
+                <th data-column="id">ID</th>
+                <th data-column="nombre">Nombre</th>
+                <th data-column="tamanio">Tamaño</th>
+                <th data-column="masa">Masa</th>
+                <th data-column="tipo">Tipo</th>
+                <th data-column="distancia">Distancia del Sol</th>
+                <th data-column="vida">Vida</th>
+                <th data-column="anillo">Anillo</th>
+                <th data-column="composicion">Composicion Admosferica</th>
+              </tr>
+            </thead>
+            <tbody class="tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </div>
+  <footer>
+    <div class="container-footer">
+      <div class="menu menu-footer">
+        <nav>
+          <ul>
+            <li><a href="#">Servicios</a></li>
+            <li><a href="#">Obras</a></li>
+            <li><a href="#">Contactos</a></li>
+          </ul>
+        </nav>
+      </div>
+      <h3 class="dercho">Todos los derechos reservados 2024. &copy;</h3>
+    </div>
+  </footer>
+  <script src="./js/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
